@@ -1,0 +1,35 @@
+{
+  "name": "litequery",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p --output-filename [name].min.js",
+    "build:debug": "webpack -d",
+    "build:watch": "webpack -d --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src test",
+    "lint:fix": "eslint src test --fix"
+  },
+  "files": [
+    "/dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlhannes/litequery.git"
+  },
+  "author": "carlhannes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlhannes/litequery/issues"
+  },
+  "homepage": "https://github.com/carlhannes/litequery#readme",
+  "devDependencies": {
+    "babel-core": "^6.18.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.18.0",
+    "eslint": "^3.8.1",
+    "webpack": "^1.13.2",
+    "webpack-livereload-plugin": "^0.9.0"
+  }
+}
