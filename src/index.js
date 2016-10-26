@@ -1,4 +1,4 @@
-import { select } from "./query";
+import { select } from "./base";
 
 export {
 	select
