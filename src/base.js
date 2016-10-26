@@ -1,15 +1,23 @@
+import { error } from "./core/errors";
+
 import { classes } from "./core/classes";
 import { content } from "./core/content";
 import { events } from "./core/events";
 import { selection } from "./core/selection";
 
-export function select( selectItem = window ) {
+export function select( selectItem = window, baseElement = document ) {
 	let obj = {};
 
 	if ( typeof selectItem === "string" ) {
-		obj.elements = document.querySelectorAll( selectItem );
+		try {
+			obj.elements = baseElement.querySelectorAll( selectItem );
+		} catch ( e ) {
+			// TODO check if we can just reset the elements perhaps rather than throwing an error?
+			error( true, e );
+			obj.elements = [];
+		}
 	} else {
-		obj.elements = [ selectItem ];
+		obj.elements = [ ...selectItem ];
 	}
 
 	/**
