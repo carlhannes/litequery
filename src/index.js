@@ -1,5 +1,5 @@
-import { selector } from "./query";
+import { select } from "./query";
 
 export {
-	selector
+	select
 };
