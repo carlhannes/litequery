@@ -3,12 +3,21 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+	"mocha": true
+  },
+  "globals": {
+	"chai": true,
+	"sinon": true,
+	"expect": true
   },
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module"
   },
+  "plugins": [
+	"mocha"
+ ],
   "extends": "eslint:recommended",
   "rules": {
     "no-alert": "error",
@@ -43,7 +52,7 @@
     "no-trailing-spaces": "error",
     "no-undef": "error",
     "no-undef-init": "error",
-    "no-unused-expressions": "error",
+    "no-unused-expressions": 0,
     "no-use-before-define": "error",
     "no-with": "error",
     "no-var": "error",
@@ -55,7 +64,7 @@
     "eol-last": "error",
     "no-extra-parens": ["error", "functions"],
     "eqeqeq": "error",
-    "key-spacing": ["error", { "beforeColon": false, "afterColon": true, "mode": strict }],
+    "key-spacing": ["error", { "beforeColon": false, "afterColon": true, "mode": "strict" }],
     "keyword-spacing": ["error", { "before": true, "after": true }],
     "new-cap": "error",
     "new-parens": "error",
