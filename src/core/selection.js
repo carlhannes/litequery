@@ -54,7 +54,7 @@ export function selection( obj ) {
 		let items = [];
 
 		obj.apply( ( item ) => {
-			items.push( ...item.childNodes );
+			items.push( ...item.children );
 		} );
 
 		return select( items );
