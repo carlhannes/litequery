@@ -6,10 +6,14 @@ export function content( obj ) {
 	 * @return {Object}
 	 */
 	obj.html = function( html ) {
-		obj.apply( ( item ) => {
-			item.innerHTML = html;
-		} );
+		if ( html ) {
+			obj.apply( ( item ) => {
+				item.innerHTML = html;
+			} );
 
-		return obj;
+			return obj;
+		} else {
+			return obj.single().elements[0].innerHTML;
+		}
 	};
 }

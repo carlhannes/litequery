@@ -16,8 +16,10 @@ export function select( selectItem = window, baseElement = document ) {
 			error( true, e );
 			obj.elements = [];
 		}
-	} else {
+	} else if ( Array.isArray( selectItem ) ) {
 		obj.elements = [ ...selectItem ];
+	} else {
+		obj.elements = [ selectItem ];
 	}
 
 	/**
