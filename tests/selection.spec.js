@@ -26,7 +26,7 @@ describe( "Selection", () => {
 		expect( select( "span.child" ).parent().elements[0].className ).to.be.equal( "parent" );
 	} );
 
-	it( "should return parent elements correctly", function () {
+	it( "should return children elements correctly", function () {
 		document.body.innerHTML = "<div class='parent'> <span class='child'>...</span> </div>";
 
 		expect( select( "div.parent" ).children().elements.length ).to.be.equal( 1 );
