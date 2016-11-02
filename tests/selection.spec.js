@@ -40,4 +40,11 @@ describe( "Selection", () => {
 		expect( select( "div.parent" ).find( ".child" ).elements[0].className ).to.be.equal( "child" );
 	} );
 
+	it( "should filter elements correctly", function () {
+		document.body.innerHTML = "<span class='item'>...</span> <span class='notthis'>...</span>";
+
+		expect( select( "span" ).elements.length ).to.be.equal( 2 );
+		expect( select( "span" ).filter( ( item ) => item.hasClass( "item" ) ).elements.length ).to.be.equal( 1 );
+	} );
+
 } );

@@ -74,4 +74,22 @@ export function selection( obj ) {
 
 		return select( items );
 	};
+
+	/**
+	 * Filter items
+	 *
+	 * @param  {Function} filter Function to filter by
+	 * @return {Object}          Select object
+	 */
+	obj.filter = function( filter ) {
+		let items = [];
+
+		obj.apply( ( item ) => {
+			if ( filter( select( item ) ) ) {
+				items.push( item );
+			}
+		} );
+
+		return select( items );
+	};
 }
