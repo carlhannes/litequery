@@ -10,7 +10,8 @@ let LiveReload = new LiveReloadPlugin();
 
 module.exports = {
 	entry: {
-		"litequery": path.resolve( srcDir, "index" )
+		"litequery": path.resolve( srcDir, "advanced" ),
+		"litequery-simple": path.resolve( srcDir, "simple" ),
 	},
 	output: {
 		path: path.resolve( __dirname, "dist" ),
