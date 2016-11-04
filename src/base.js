@@ -5,21 +5,22 @@ import { content } from "./core/content";
 import { events } from "./core/events";
 import { selection } from "./core/selection";
 
-export function select( selectItem = window, baseElement = document ) {
-	let obj = {};
+export function select( selector = window, baseElement = document ) {
+	let obj = { selector: null };
 
-	if ( typeof selectItem === "string" ) {
+	if ( typeof selector === "string" ) {
 		try {
-			obj.elements = baseElement.querySelectorAll( selectItem );
+			obj.elements = baseElement.querySelectorAll( selector );
+			obj.selector = selector;
 		} catch ( e ) {
 			// TODO check if we can just reset the elements perhaps rather than throwing an error?
 			error( true, e );
 			obj.elements = [];
 		}
-	} else if ( Array.isArray( selectItem ) ) {
-		obj.elements = [ ...selectItem ];
+	} else if ( Array.isArray( selector ) ) {
+		obj.elements = [ ...selector ];
 	} else {
-		obj.elements = [ selectItem ];
+		obj.elements = [ selector ];
 	}
 
 	/**
