@@ -61,4 +61,37 @@ export function events( obj ) {
 
 		return obj;
 	};
+
+	/**
+	 * Trigger events
+	 *
+	 * @param  {[type]} trigger [description]
+	 * @return {[type]}         [description]
+	 */
+	obj.trigger = function( trigger ) {
+		let newEvent = function() {
+			let event;
+			if ( document.createEvent ) {
+				event = document.createEvent( "HTMLEvents" );
+				event.initEvent( trigger, true, true );
+			} else {
+				event = document.createEventObject();
+				event.eventType = trigger;
+			}
+
+			event.eventName = trigger;
+			return event;
+		};
+
+		if ( document.createEvent ) {
+			obj.apply( ( item ) => {
+				item.dispatchEvent( newEvent() );
+			} );
+		} else {
+			obj.apply( ( item ) => {
+				let event = newEvent();
+				item.fireEvent( "on" + event.eventType, event );
+			} );
+		}
+	};
 }
