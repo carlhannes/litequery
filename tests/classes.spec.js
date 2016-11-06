@@ -26,4 +26,14 @@ describe( "Class manipulation", () => {
 		expect( n.elements[0].className ).to.be.equal( "duplicate" );
 	} );
 
+	it( "should deduplicate classes", function () {
+		let n = document.createElement( "test" );
+
+		n.className = "test1 test2";
+
+		n = select( n ).removeClass( "test2" );
+
+		expect( n.elements[0].className ).to.be.equal( "test1" );
+	} );
+
 } );

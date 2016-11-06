@@ -59,4 +59,29 @@ export function classes( obj ) {
 
 		return obj.dedupClass();
 	};
+
+	/**
+	 * Removes a class from all affected elements
+	 * (also deduplicates)
+	 *
+	 * @param {String} className The class to add
+	 * @return {Object}
+	 */
+	obj.removeClass = function( className ) {
+		obj.apply( ( item ) => {
+			let output = [];
+			let classList = item.className.split( " " );
+
+			classList.forEach( ( curClass ) => {
+				curClass = curClass.trim();
+				if ( curClass && output.indexOf( curClass ) === -1 && curClass !== className ) {
+					output.push( curClass );
+				}
+			} );
+
+			item.className = output.join( " " );
+		} );
+
+		return obj;
+	};
 }
