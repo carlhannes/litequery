@@ -38,6 +38,20 @@ export function select( selector = window, baseElement = document ) {
 	};
 
 	/**
+	 * Each is just like apply, but wraps the items in a new select
+	 *
+	 * @param  {Function} callback Callback function
+	 * @return {Object}
+	 */
+	obj.each = function( callback ) {
+		obj.apply( ( item ) => {
+			callback( select( item ) );
+		} );
+
+		return obj;
+	};
+
+	/**
 	 * Extend the functionality
 	 *
 	 * @param  {Function} callback [description]
