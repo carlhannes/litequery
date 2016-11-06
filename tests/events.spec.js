@@ -13,7 +13,6 @@ describe( "Events", () => {
 		select( "div.test" ).trigger( "click" );
 
 		expect( test ).to.be.true;
-
 	} );
 
 	it( "should fire multiple events correctly", function () {
@@ -24,7 +23,18 @@ describe( "Events", () => {
 		select( "div.test" ).trigger( "click" );
 
 		expect( test ).to.be.equal( 4 );
+	} );
 
+	it( "should detect events on selector", function () {
+		let test = false;
+
+		select( "div.test" ).on( "click", () => { test = true; } );
+
+		// here we change the DOM after the select.on event handler
+		document.body.innerHTML = "<div class='test'></div>";
+		select( "div.test" ).trigger( "click" );
+
+		expect( test ).to.be.true;
 	} );
 
 } );
