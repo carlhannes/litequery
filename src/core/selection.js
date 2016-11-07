@@ -61,8 +61,19 @@ export function selection( obj ) {
 	};
 
 	/**
+	 * Return a specific item
+	 *
+	 * @param  {Integer} index Index to get by, zero-based
+	 * @return {Object}
+	 */
+	obj.eq = function( index ) {
+		return obj.elements[index] ? select( obj.elements[index] ) : undefined;
+	};
+
+	/**
 	 * Return the the children of all selected objects objects
 	 *
+	 * @param  {String} selectItem Selector string
 	 * @return {Object}
 	 */
 	obj.find = function( selectItem ) {
@@ -91,5 +102,19 @@ export function selection( obj ) {
 		} );
 
 		return select( items );
+	};
+
+	/**
+	 * Get element NOT wrapped in select by index
+	 *
+	 * @param  {Integer} index	 		Index to get by, zero-based
+	 * @return {NodeElement/Array}      Node Element if index specified, otherwise array of node elements
+	 */
+	obj.get = function( index ) {
+		if ( index === undefined ) {
+			return obj.elements;
+		}
+
+		return obj.elements[index];
 	};
 }

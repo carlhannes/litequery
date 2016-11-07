@@ -26,12 +26,26 @@ describe( "Class manipulation", () => {
 		expect( n.elements[0].className ).to.be.equal( "duplicate" );
 	} );
 
-	it( "should deduplicate classes", function () {
+	it( "should remove classes", function () {
 		let n = document.createElement( "test" );
 
 		n.className = "test1 test2";
 
 		n = select( n ).removeClass( "test2" );
+
+		expect( n.elements[0].className ).to.be.equal( "test1" );
+	} );
+
+	it( "should toggle classes", function () {
+		let n = document.createElement( "test" );
+
+		n.className = "test1";
+
+		n = select( n ).toggleClass( "test1" );
+
+		expect( n.elements[0].className ).to.be.equal( "" );
+
+		n.toggleClass( "test1" );
 
 		expect( n.elements[0].className ).to.be.equal( "test1" );
 	} );

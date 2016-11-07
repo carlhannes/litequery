@@ -84,4 +84,20 @@ export function classes( obj ) {
 
 		return obj;
 	};
+
+	/**
+	 * Toggle a class
+	 *
+	 * @param  {String} className The class name to toggle
+	 * @return {Object}
+	 */
+	obj.toggleClass = function( className ) {
+		if ( obj.hasClass( className ) ) {
+			obj.removeClass( className );
+		} else {
+			obj.addClass( className );
+		}
+
+		return obj;
+	};
 }

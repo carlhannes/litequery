@@ -33,6 +33,18 @@ describe( "Selection", () => {
 		expect( select( "div.parent" ).children().elements[0].className ).to.be.equal( "child" );
 	} );
 
+	it( "should be able to fetch by index", function () {
+		document.body.innerHTML = "<div>...</div> <div>!!!</div>";
+
+		expect( select( "div" ).eq( 0 ).elements.length ).to.be.equal( 1 );
+		expect( select( "div" ).eq( 0 ).elements[0].innerHTML ).to.be.equal( "..." );
+
+		expect( select( "div" ).eq( 1 ).elements.length ).to.be.equal( 1 );
+		expect( select( "div" ).eq( 1 ).elements[0].innerHTML ).to.be.equal( "!!!" );
+
+		expect( select( "div" ).eq( 2 ) ).to.be.undefined;
+	} );
+
 	it( "should find elements in elements correctly", function () {
 		document.body.innerHTML = "<div class='parent'> <span class='child'>...</span> </div>";
 
@@ -45,6 +57,17 @@ describe( "Selection", () => {
 
 		expect( select( "span" ).elements.length ).to.be.equal( 2 );
 		expect( select( "span" ).filter( ( item ) => item.hasClass( "item" ) ).elements.length ).to.be.equal( 1 );
+	} );
+
+	it( "should be able to fetch by index", function () {
+		document.body.innerHTML = "<div>...</div> <div>!!!</div>";
+
+		expect( select( "div" ).get().length ).to.be.equal( 2 );
+		expect( select( "div" ).get( 0 ).innerHTML ).to.be.equal( "..." );
+
+		expect( select( "div" ).get( 1 ).innerHTML ).to.be.equal( "!!!" );
+
+		expect( select( "div" ).get( 2 ) ).to.be.undefined;
 	} );
 
 } );
