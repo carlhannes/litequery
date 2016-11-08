@@ -2,7 +2,7 @@
   "name": "litequery",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "/dist/litequery-simple.js",
   "scripts": {
     "build": "webpack -p --output-filename [name].min.js",
     "build:debug": "webpack -d",
