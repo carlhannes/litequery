@@ -65,8 +65,8 @@ export function events( obj ) {
 	/**
 	 * Trigger events
 	 *
-	 * @param  {[type]} trigger [description]
-	 * @return {[type]}         [description]
+	 * @param  {String} trigger Event to trigger
+	 * @return {Object}
 	 */
 	obj.trigger = function( trigger ) {
 		let newEvent = function() {
@@ -93,5 +93,7 @@ export function events( obj ) {
 				item.fireEvent( "on" + event.eventType, event );
 			} );
 		}
+
+		return obj;
 	};
 }
