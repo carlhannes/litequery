@@ -52,6 +52,19 @@ describe( "Selection", () => {
 		expect( select( "div.parent" ).find( ".child" ).elements[0].className ).to.be.equal( "child" );
 	} );
 
+	it( "should find closest parent elements correctly", function () {
+		document.body.innerHTML = "<div class='parent'> <div class='child'> <div class='subchild1'>...</div> </div> <div class='child'> <div class='subchild2'>...</div> </div> </div>";
+
+		expect( select( ".subchild1" ).closest( ".child" ).elements.length ).to.be.equal( 1 );
+		expect( select( ".subchild1" ).closest( ".child" ).elements[0].className ).to.be.equal( "child" );
+
+		expect( select( ".subchild1" ).closest( ".parent" ).elements.length ).to.be.equal( 1 );
+		expect( select( ".subchild1" ).closest( ".parent" ).elements[0].className ).to.be.equal( "parent" );
+
+		expect( select( ".subchild2" ).closest( ".parent" ).elements.length ).to.be.equal( 1 );
+		expect( select( ".subchild2" ).closest( ".parent" ).elements[0].className ).to.be.equal( "parent" );
+	} );
+
 	it( "should filter elements correctly", function () {
 		document.body.innerHTML = "<span class='item'>...</span> <span class='notthis'>...</span>";
 

@@ -87,6 +87,45 @@ export function selection( obj ) {
 	};
 
 	/**
+	 * Return closest parent by selector from the current selections
+	 *
+	 * @param  {String} selectItem Selector string
+	 * @return {Object}
+	 */
+	obj.closest = function( selectItem ) {
+		let items = [];
+
+		function traverse( element, previous = null ) {
+			if ( !element.parentElement ) {
+				return [];
+			}
+
+			let potential = select( selectItem, element.parentElement ).elements;
+			let len = potential.length;
+
+			if ( potential && len ) {
+				if ( !previous || len === 1 ) {
+					return potential;
+				}
+
+				for ( let i = 0; i < len; i++ ) {
+					if ( potential[i] === previous ) {
+						return [potential[i]];
+					}
+				}
+			}
+
+			return traverse( element.parentElement, element );
+		}
+
+		obj.apply( ( element ) => {
+			items.push( ...traverse( element ) );
+		} );
+
+		return select( items );
+	};
+
+	/**
 	 * Filter items
 	 *
 	 * @param  {Function} filter Function to filter by

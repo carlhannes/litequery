@@ -1,6 +1,6 @@
 {
   "name": "litequery",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "",
   "main": "/dist/litequery-simple.js",
   "scripts": {

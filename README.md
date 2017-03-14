@@ -58,7 +58,8 @@ lq('li').last(); // Get the last matched li item.
 lq('li').parent(); // Get the parent of the first matched item.
 lq('ul').children(); // Return the children of all selected objects
 lq('li').eq(0); // Get the first matched li item. By index, zero-based.
-lq('ul').find('div'); // Get all div's in all matched ul elements. (querySelector match)
+lq('ul').find('div'); // Traverse the DOM down from UL and select ALL DIVs in each UL.
+lq('ul').closest('div'); // Traverse the DOM up from UL and select the first DIV for each UL.
 
 // Advanced selection
 lq('li').filter(function(item) {
