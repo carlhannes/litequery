@@ -2,6 +2,23 @@ import { select } from "../base";
 
 let globalEventRegistry = {};
 
+/**
+ * Traverse an event through the DOM, by testing all children of the currentElement
+ *
+ * @param  {Object} event           An event object
+ * @param  {Object} currentElement  The current element to check for event
+ * @param  {Object} registeredEvent	The cached/registered event by the litequery event handler
+ * @return {Undefined}              Does not return anything
+ */
+function traverseEventThroughDOM( event, currentElement, registeredEvent ) {
+	if ( currentElement === event.target || currentElement === event.srcElement ) {
+		registeredEvent.callback.call( select( event.target ), event );
+	}
+	for ( let i = 0, len = currentElement.children.length; i < len; i++ ) {
+		traverseEventThroughDOM( event, currentElement.children[i], registeredEvent );
+	}
+}
+
 export function events( obj ) {
 	/**
 	 * Attach an event listener to an item
@@ -47,13 +64,11 @@ export function events( obj ) {
 
 		if ( register ) {
 			window.addEventListener( trigger, ( event ) => {
-				globalEventRegistry[trigger].forEach( function ( item ) {
-					let targets = select( obj.selector );
+				globalEventRegistry[trigger].forEach( function ( registeredEvent ) {
+					let targets = select( registeredEvent.selector );
 
-					targets.apply( ( currentTarget ) => {
-						if ( currentTarget === event.target || currentTarget === event.srcElement ) {
-							item.callback.call( select( event.target ), event );
-						}
+					targets.apply( ( currentElement ) => {
+						traverseEventThroughDOM( event, currentElement, registeredEvent );
 					} );
 				} );
 			} );
