@@ -71,15 +71,15 @@ lq('li').get(0); // Returns a specific, non-litequery wrapped element (node) by 
 
 // Apply something to all items using their actual node or element rather than the litequery wrapped one.
 lq('.item').apply(function (item) {
-	item.innerHTML = '';
-	item.setAttribute('src', '../../test.jpg');
+  item.innerHTML = '';
+  item.setAttribute('src', '../../test.jpg');
 });
 
 // Do something to each and every item, but with a litequery wrapped object.
 lq('.item').each(function(item) {
-	if (item.hasClass('onclear')) {
-		item.html('');
-	}
+  if (item.hasClass('onclear')) {
+    item.html('');
+  }
 })
 ```
 
