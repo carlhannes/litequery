@@ -46,7 +46,7 @@ lq('#hammer').on('touchstart', function(event) {
 
 // Window events
 lq().on('resize', function(event) {
-	console.log('Awh lag');
+  console.log('Awh lag');
 });
 
 lq().trigger('resize'); // Trigger resize on window
@@ -63,7 +63,7 @@ lq('ul').closest('div'); // Traverse the DOM up from UL and select the first DIV
 
 // Advanced selection
 lq('li').filter(function(item) {
-	return item.html(); === 'lol'; // Filter and return all li items containing the world "lol".
+  return item.html(); === 'lol'; // Filter and return all li items containing the world "lol".
 });
 
 lq('li').get(); // Returns a NodeList of all matched li elements.
