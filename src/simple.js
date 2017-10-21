@@ -1,5 +1,5 @@
-import { select } from "./base";
+import select from './base';
 
-let global = window || this;
+const global = window || this;
 
 global.lq = select;

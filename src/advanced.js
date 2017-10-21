@@ -1,5 +1,5 @@
-import { select } from "./base";
+import select from './base';
 
 export {
-	select
+  select /* eslint import/prefer-default-export: 0 */
 };

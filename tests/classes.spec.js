@@ -1,53 +1,52 @@
-import { select } from "../src/base";
-import { default as jsdom } from "mocha-jsdom";
-import { expect } from "chai";
+import jsdom from 'mocha-jsdom';
+import { expect } from 'chai';
+import { select } from '../src/base';
 
-describe( "Class manipulation", () => {
-	jsdom();
+describe('Class manipulation', () => {
+  jsdom();
 
-	it( "should handle addClass and hasClass correctly", function () {
-		let n = document.createElement( "test" );
+  it('should handle addClass and hasClass correctly', () => {
+    let n = document.createElement('test');
 
-		n = select( n );
+    n = select(n);
 
-		n.addClass( "test" );
+    n.addClass('test');
 
-		expect( n.elements[0].className ).to.be.equal( "test" );
-		expect( n.hasClass( "test" ) ).to.be.true;
-	} );
+    expect(n.elements[0].className).to.be.equal('test');
+    expect(n.hasClass('test')).to.be.true;
+  });
 
-	it( "should deduplicate classes", function () {
-		let n = document.createElement( "test" );
+  it('should deduplicate classes', () => {
+    let n = document.createElement('test');
 
-		n.className = "duplicate duplicate";
+    n.className = 'duplicate duplicate';
 
-		n = select( n ).dedupClass();
+    n = select(n).dedupClass();
 
-		expect( n.elements[0].className ).to.be.equal( "duplicate" );
-	} );
+    expect(n.elements[0].className).to.be.equal('duplicate');
+  });
 
-	it( "should remove classes", function () {
-		let n = document.createElement( "test" );
+  it('should remove classes', () => {
+    let n = document.createElement('test');
 
-		n.className = "test1 test2";
+    n.className = 'test1 test2';
 
-		n = select( n ).removeClass( "test2" );
+    n = select(n).removeClass('test2');
 
-		expect( n.elements[0].className ).to.be.equal( "test1" );
-	} );
+    expect(n.elements[0].className).to.be.equal('test1');
+  });
 
-	it( "should toggle classes", function () {
-		let n = document.createElement( "test" );
+  it('should toggle classes', () => {
+    let n = document.createElement('test');
 
-		n.className = "test1";
+    n.className = 'test1';
 
-		n = select( n ).toggleClass( "test1" );
+    n = select(n).toggleClass('test1');
 
-		expect( n.elements[0].className ).to.be.equal( "" );
+    expect(n.elements[0].className).to.be.equal('');
 
-		n.toggleClass( "test1" );
+    n.toggleClass('test1');
 
-		expect( n.elements[0].className ).to.be.equal( "test1" );
-	} );
-
-} );
+    expect(n.elements[0].className).to.be.equal('test1');
+  });
+});
