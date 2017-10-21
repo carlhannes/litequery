@@ -17,7 +17,7 @@ Then you can start using it, it'll be attached as the global variable `litequery
 * Use `npm i litequery --save` in your project folder
 * Import `node_modules/litequery/dist/litequery.min.js` in your project, such as:
 ```js
-import litequery from 'litequery`;
+import litequery from 'litequery';
 
 litequery('div.container').html('Hello World!');
 ```
