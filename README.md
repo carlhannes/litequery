@@ -1,5 +1,5 @@
 # LiteQuery
-Lightweight JavaScript DOM manipulation, inspired by jQuery and jqlite, but runs using webpack-compiled, babel transpiled ES6 code.
+Lightweight JavaScript DOM manipulation, inspired by jQuery and jqlite, but runs using rollup-compiled, babel transpiled ES6 code.
 
 ## But why?
 I wanted an easy wrapper for document.querySelector and querySelector all that mimics the behaviour of jQuery but is still lightweight, manageable and easy to develop.
