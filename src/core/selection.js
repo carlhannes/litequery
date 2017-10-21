@@ -1,4 +1,4 @@
-import select from '../base';
+import select from '../index';
 import { warn } from './errors';
 
 export default function selection(obj) {

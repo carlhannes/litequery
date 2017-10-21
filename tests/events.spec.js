@@ -1,6 +1,6 @@
 import jsdom from 'mocha-jsdom';
 import { expect } from 'chai';
-import select from '../src/base';
+import select from '../src/index';
 
 /* eslint no-unused-expressions: 0 */
 

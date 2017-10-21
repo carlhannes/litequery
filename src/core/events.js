@@ -1,4 +1,4 @@
-import select from '../base';
+import select from '../index';
 
 const globalEventRegistry = {};
 
