@@ -25,6 +25,8 @@ litequery('div.container').html('Hello World!');
 # Is it chainable?
 Yes.
 ```js
+import lq from 'litequery';
+
 lq('div').addClass('test').html('asdf');
 ```
 works just as you would expect.
@@ -32,6 +34,8 @@ Some functions do however return variables, such as `hasClass('test')` returns a
 
 ## What does it do?
 ```js
+import lq from 'litequery';
+
 // Classes
 lq('div#myDiv').hasClass('selected'); // Do all the selected elements have the class specified? (returns Boolean)
 lq('div#myDiv').dedupClass(); // Deduplicates all classes on all affected elements.
