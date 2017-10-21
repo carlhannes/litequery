@@ -2,7 +2,7 @@
   "name": "litequery",
   "version": "0.1.3",
   "description": "",
-  "main": "/dist/litequery-simple.js",
+  "main": "/dist/litequery.min.js",
   "scripts": {
     "build": "rollup -c --environment BUILD:production",
     "build:debug": "rollup -c",

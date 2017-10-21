@@ -8,15 +8,19 @@ I wanted an easy wrapper for document.querySelector and querySelector all that m
 ### ...really fast?
 Include the following snippet in your HTML:
 ```html
-<script src="https://unpkg.com/litequery/dist/litequery-simple.min.js"></script>
+<script src="https://unpkg.com/litequery/dist/litequery.min.js"></script>
 ```
-Then you can start using it, it'll be attached as the global variable `lq()`.
+Then you can start using it, it'll be attached as the global variable `litequery()`.
 
 ### ...the proper way?
 * Make sure you have NodeJS & NPM installed (or Yarn, if you prefer that)
 * Use `npm i litequery --save` in your project folder
-* Import `node_modules/litequery/dist/litequery-simple.min.js` in your project.
-*Advanced users may want to import the ES6 module from the source code.*
+* Import `node_modules/litequery/dist/litequery.min.js` in your project, such as:
+```js
+import litequery from 'litequery`;
+
+litequery('div.container').html('Hello World!');
+```
 
 # Is it chainable?
 Yes.
