@@ -1,40 +1,41 @@
-import { select } from "../src/base";
-import { default as jsdom } from "mocha-jsdom";
-import { expect } from "chai";
+import jsdom from 'mocha-jsdom';
+import { expect } from 'chai';
+import select from '../src/index';
 
-describe( "Events", () => {
-	jsdom();
+/* eslint no-unused-expressions: 0 */
 
-	it( "should fire single events correctly", function () {
-		document.body.innerHTML = "<div class='test'></div>";
-		let test = false;
+describe('Events', () => {
+  jsdom();
 
-		select( "div.test" ).on( "click", () => { test = true; } );
-		select( "div.test" ).trigger( "click" );
+  it('should fire single events correctly', () => {
+    document.body.innerHTML = "<div class='test'></div>";
+    let test = false;
 
-		expect( test ).to.be.true;
-	} );
+    select('div.test').on('click', () => { test = true; });
+    select('div.test').trigger('click');
 
-	it( "should fire multiple events correctly", function () {
-		document.body.innerHTML = "<div class='test'></div><div class='test'></div><div class='test'></div><div class='test'></div>";
-		let test = 0;
+    expect(test).to.be.true;
+  });
 
-		select( "div.test" ).on( "click", () => { test++; } );
-		select( "div.test" ).trigger( "click" );
+  it('should fire multiple events correctly', () => {
+    document.body.innerHTML = "<div class='test'></div><div class='test'></div><div class='test'></div><div class='test'></div>";
+    let test = 0;
 
-		expect( test ).to.be.equal( 4 );
-	} );
+    select('div.test').on('click', () => { test++; });
+    select('div.test').trigger('click');
 
-	it( "should detect events on selector", function () {
-		let test = false;
+    expect(test).to.be.equal(4);
+  });
 
-		select( "div.test" ).on( "click", () => { test = true; } );
+  it('should detect events on selector', () => {
+    let test = false;
 
-		// here we change the DOM after the select.on event handler
-		document.body.innerHTML = "<div class='test'></div>";
-		select( "div.test" ).trigger( "click" );
+    select('div.test').on('click', () => { test = true; });
 
-		expect( test ).to.be.true;
-	} );
+    // here we change the DOM after the select.on event handler
+    document.body.innerHTML = "<div class='test'></div>";
+    select('div.test').trigger('click');
 
-} );
+    expect(test).to.be.true;
+  });
+});

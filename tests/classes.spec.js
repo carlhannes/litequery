@@ -1,53 +1,54 @@
-import { select } from "../src/base";
-import { default as jsdom } from "mocha-jsdom";
-import { expect } from "chai";
+import jsdom from 'mocha-jsdom';
+import { expect } from 'chai';
+import select from '../src/index';
 
-describe( "Class manipulation", () => {
-	jsdom();
+/* eslint no-unused-expressions: 0 */
 
-	it( "should handle addClass and hasClass correctly", function () {
-		let n = document.createElement( "test" );
+describe('Class manipulation', () => {
+  jsdom();
 
-		n = select( n );
+  it('should handle addClass and hasClass correctly', () => {
+    let n = document.createElement('test');
 
-		n.addClass( "test" );
+    n = select(n);
 
-		expect( n.elements[0].className ).to.be.equal( "test" );
-		expect( n.hasClass( "test" ) ).to.be.true;
-	} );
+    n.addClass('test');
 
-	it( "should deduplicate classes", function () {
-		let n = document.createElement( "test" );
+    expect(n.elements[0].className).to.be.equal('test');
+    expect(n.hasClass('test')).to.be.true;
+  });
 
-		n.className = "duplicate duplicate";
+  it('should deduplicate classes', () => {
+    let n = document.createElement('test');
 
-		n = select( n ).dedupClass();
+    n.className = 'duplicate duplicate';
 
-		expect( n.elements[0].className ).to.be.equal( "duplicate" );
-	} );
+    n = select(n).dedupClass();
 
-	it( "should remove classes", function () {
-		let n = document.createElement( "test" );
+    expect(n.elements[0].className).to.be.equal('duplicate');
+  });
 
-		n.className = "test1 test2";
+  it('should remove classes', () => {
+    let n = document.createElement('test');
 
-		n = select( n ).removeClass( "test2" );
+    n.className = 'test1 test2';
 
-		expect( n.elements[0].className ).to.be.equal( "test1" );
-	} );
+    n = select(n).removeClass('test2');
 
-	it( "should toggle classes", function () {
-		let n = document.createElement( "test" );
+    expect(n.elements[0].className).to.be.equal('test1');
+  });
 
-		n.className = "test1";
+  it('should toggle classes', () => {
+    let n = document.createElement('test');
 
-		n = select( n ).toggleClass( "test1" );
+    n.className = 'test1';
 
-		expect( n.elements[0].className ).to.be.equal( "" );
+    n = select(n).toggleClass('test1');
 
-		n.toggleClass( "test1" );
+    expect(n.elements[0].className).to.be.equal('');
 
-		expect( n.elements[0].className ).to.be.equal( "test1" );
-	} );
+    n.toggleClass('test1');
 
-} );
+    expect(n.elements[0].className).to.be.equal('test1');
+  });
+});
