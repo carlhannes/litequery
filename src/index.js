@@ -1,5 +1,6 @@
 import { error } from './core/errors';
 
+import attributes from './core/attributes';
 import classes from './core/classes';
 import content from './core/content';
 import events from './core/events';
@@ -64,6 +65,7 @@ export default function select(selector = window, baseElement = document) {
   /**
  * Extend the obj with all the parts
  */
+  obj.extend(attributes);
   obj.extend(classes);
   obj.extend(content);
   obj.extend(events);
