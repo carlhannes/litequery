@@ -5,7 +5,7 @@ import select from '../src/index';
 describe('Attributes manipulation', () => {
   jsdom();
 
-  it('should change innerHTML correctly', () => {
+  it('should change DOM elements attributes correctly', () => {
     let n = document.createElement('asdf');
 
     n.setAttribute('test', 'asdf');
