@@ -5,6 +5,7 @@ import classes from './core/classes';
 import content from './core/content';
 import events from './core/events';
 import selection from './core/selection';
+import style from './core/style';
 
 export default function select(selector = window, baseElement = document) {
   const obj = { selector: null };
@@ -70,6 +71,7 @@ export default function select(selector = window, baseElement = document) {
   obj.extend(content);
   obj.extend(events);
   obj.extend(selection);
+  obj.extend(style);
 
   return obj;
 }
