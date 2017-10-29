@@ -36,6 +36,10 @@ Some functions do however return variables, such as `hasClass('test')` returns a
 ```js
 import lq from 'litequery';
 
+// Attributes
+lq('img#myImg').attr('alt'); // Returns the "alt" text attribute, <img alt="hai"> - result "hai".
+lq('img#myImg').attr('alt', 'This is better'); // Sets the "alt" attribute to "This is better".
+
 // Classes
 lq('div#myDiv').hasClass('selected'); // Do all the selected elements have the class specified? (returns Boolean)
 lq('div#myDiv').dedupClass(); // Deduplicates all classes on all affected elements.
@@ -88,7 +92,11 @@ lq('.item').each(function(item) {
   if (item.hasClass('onclear')) {
     item.html('');
   }
-})
+});
+
+// Modify styles
+lq('.item').css('background', 'red'); // Turns the background red, same as document.querySelector('.item').style.background = 'red';
+lq('.item').css('background'); // Returns 'red'
 ```
 
 ## Is this... tested?
