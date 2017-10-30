@@ -53,7 +53,7 @@ var content = lq('#content').html(); // Return #content's innerHTML as a string.
 
 // Events (pretty basic and might not fire accurately at the moment, feel free to contribute)
 lq('#hammer').on('touchstart', function(event) {
-	event.preventDefault(); // Can't touch this
+  event.preventDefault(); // Can't touch this
 });
 
 // Window events
